@@ -1,0 +1,41 @@
+<div class="bg-gradient-to-t from-neutral-500 to-white w-screen sm:w-screen h-screen p-12 flex flex-col gap-4">
+  <div class="w-10/12 sm:w-4/12 bg-gradient-to-t from-orange-500 to-yellow-500 h-20 rounded-lg text-white p-2 text-xl">
+    <p>Total students: {{userscount}} </p>
+  </div>
+  <div class="flex flex-col w-12/12 sm:w-10/12 bg-white border border-neutral-600 shadow-xl rounded-sm p-4 shadow-neutral-700 h-fit overflow-y-scroll">
+    <div class="flex flex-row justify-between mb-4">
+      <p>Students Admin</p>
+      <input
+        type="text"
+        class="w-3/12 border border-neutral-400 rounded-sm placeholder:text-neutral-300"
+        placeholder="Search admins"
+        [(ngModel)]="searchText"
+      />
+      <a routerLink="/admins/create"><button class="w-fit h10 bg-blue-600 flex justify-center items-center rounded-sm text-white text-xs p-2 font-semibold"><p>add new</p></button></a>
+    </div>
+
+    <table class="min-w-full border border-neutral-300">
+      <thead>
+        <tr class="bg-neutral-200">
+          <th class="border border-neutral-300 p-2">Email</th>
+          <th class="border border-neutral-300 p-2">Password</th>
+          <th class="border border-neutral-300 p-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let std of filteredUsers" class="border-b border-neutral-300">
+          <td class="p-2">{{ std.adminEmail }}</td>
+          <td class="p-2">{{ std.password }}</td>
+          <td class="p-2 flex justify-around">
+            <a routerLink="/admins/{{std.id}}/edit"><button class="bg-blue-500 text-white px-2 py-1 rounded-sm">
+              Edit
+            </button></a>
+            <button (click)="deletUser(std.id)" class="bg-red-500 text-white px-2 py-1 rounded-sm">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

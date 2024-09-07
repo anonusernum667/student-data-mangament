@@ -1,0 +1,16 @@
+ul{
+  list-style: none;
+}
+.rotate{
+  transition: transform 0.5s ease; /* Smooth transition */
+
+  transform: rotate(90deg);
+
+}
+.ulopener {
+
+  transition: transform 0.5s ease; /* Smooth transition */
+}
+.no-transition {
+  transition: none; /* Disable transition */
+}
